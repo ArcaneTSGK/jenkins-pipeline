@@ -16,7 +16,7 @@ pipeline {
                         def credentials = "${GIT_USERNAME}:${GIT_PASSWORD}"
                         def encodedCredentials = credentials.bytes.encodeBase64().toString()
                         def headers = [Authorization = "Basic ${encodedCredentials}"]
-                        def ahead = powershell(returnStatus: true, script: "Invoke-WebRequest -Uri 'https://api.github.com/repos/ArcaneTSGK/jenkins-pipeline/compare/testing...master' -Headers ${Headers} | ConvertFrom-Json")
+                        def ahead = powershell(returnStatus: true, script: "Invoke-WebRequest -Uri 'https://api.github.com/repos/ArcaneTSGK/jenkins-pipeline/compare/testing...master' -Headers ${headers} | ConvertFrom-Json")
                         echo ahead.status
                     }
                 }

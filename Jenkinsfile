@@ -21,7 +21,7 @@ pipeline {
 
                         headersMap['Authorization'] = "Basic ${encodedCredentials}"
 
-                        def ahead = powershell(returnStatus: true, script: "Invoke-WebRequest -Uri 'https://api.github.com/repos/ArcaneTSGK/jenkins-pipeline/compare/testing...master' -Headers $headersMap | ConvertFrom-Json")
+                        def ahead = powershell(returnStatus: true, script: "Invoke-WebRequest -Uri 'https://api.github.com/repos/ArcaneTSGK/jenkins-pipeline/compare/testing...master' -Headers @{'Authorization' = '$encodedCredentials'} | ConvertFrom-Json")
                         echo ahead.status
                     }
                 }

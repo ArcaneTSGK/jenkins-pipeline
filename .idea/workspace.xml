@@ -19,7 +19,7 @@
         <entry file="file://$PROJECT_DIR$/Jenkinsfile">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
-              <caret line="23" column="203" selection-start-line="23" selection-start-column="203" selection-end-line="23" selection-end-column="203" />
+              <caret line="23" column="253" selection-start-line="23" selection-start-column="253" selection-end-line="23" selection-end-column="253" />
             </state>
           </provider>
         </entry>
@@ -89,12 +89,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1544992424182</updated>
-      <workItem from="1544992425302" duration="2326000" />
+      <workItem from="1544992425302" duration="2490000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2326000" />
+    <option name="totallyTimeSpent" value="2490000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -126,7 +126,7 @@
     <entry file="file://$PROJECT_DIR$/Jenkinsfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="23" column="203" selection-start-line="23" selection-start-column="203" selection-end-line="23" selection-end-column="203" />
+          <caret line="23" column="253" selection-start-line="23" selection-start-column="253" selection-end-line="23" selection-end-column="253" />
         </state>
       </provider>
     </entry>

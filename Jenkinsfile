@@ -13,14 +13,11 @@ pipeline {
             steps {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'git-credentials', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
                     script {
-                        def headersMap = [:]
-
                         def credentials = "${GIT_USERNAME}:${GIT_PASSWORD}"
+                        def $encodedCreds = credentials.bytes.encodeBase64().toString()
 
-                        def encodedCredentials = credentials.bytes.encodeBase64().toString()
-
-                        def ahead = powershell(returnStatus: true, script: "Invoke-WebRequest -Uri 'https://api.github.com/repos/ArcaneTSGK/jenkins-pipeline/compare/testing...master' -Headers @{'Authorization' = 'Basic $encodedCredentials'} | ConvertFrom-Json")
-                        echo ahead.status
+                        def ahead = powershell(returnStatus: true, script: "Invoke-WebRequest -Uri 'https://api.github.com/repos/ArcaneTSGK/jenkins-pipeline/compare/testing...master' -Headers @{'Authorization' = 'Basic $encodedCreds'} | ConvertFrom-Json")
+                        echo ahead
                     }
                 }
             }

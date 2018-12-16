@@ -19,9 +19,7 @@ pipeline {
 
                         def encodedCredentials = credentials.bytes.encodeBase64().toString()
 
-                        headersMap['Authorization'] = "Basic ${encodedCredentials}"
-
-                        def ahead = powershell(returnStatus: true, script: "Invoke-WebRequest -Uri 'https://api.github.com/repos/ArcaneTSGK/jenkins-pipeline/compare/testing...master' -Headers @{'Authorization' = '$encodedCredentials'} | ConvertFrom-Json")
+                        def ahead = powershell(returnStatus: true, script: "Invoke-WebRequest -Uri 'https://api.github.com/repos/ArcaneTSGK/jenkins-pipeline/compare/testing...master' -Headers @{'Authorization' = 'Basic $encodedCredentials'} | ConvertFrom-Json")
                         echo ahead.status
                     }
                 }

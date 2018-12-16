@@ -16,8 +16,8 @@ pipeline {
                         def credentials = "${GIT_USERNAME}:${GIT_PASSWORD}"
                         def encodedCreds = credentials.bytes.encodeBase64().toString()
 
-                        def ahead = powershell(returnStatus: true, script: "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri 'https://api.github.com/repos/ArcaneTSGK/jenkins-pipeline/compare/testing...master' -Headers @{'Authorization' = 'Basic $encodedCreds'} | ConvertFrom-Json")
-                        echo ahead.status
+                        def ahead = powershell(returnStatus: true, script: "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri 'https://api.github.com/repos/ArcaneTSGK/jenkins-pipeline/compare/testing...master' -Headers @{'Authorization' = 'Basic $encodedCreds'} | ConvertFrom-Json; $status = $result.status; Write-Output $status")
+                        echo ahead
                     }
                 }
             }

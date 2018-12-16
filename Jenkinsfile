@@ -1,0 +1,26 @@
+#!/usr/bin/env groovy
+
+pipeline {
+    agent any
+    options {
+        skipDefaultCheckout()
+    }
+    environment {
+        CI = 'true'
+    }
+    stages {
+        stage('Branch Analysis') {
+            steps {
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'git-credentials', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+                    script {
+                        def credentials = "${GIT_USERNAME}:${GIT_PASSWORD}"
+                        def encodedCredentials = credentials.bytes.encodeBase64().toString()
+                        def headers = [Authorization = "Basic ${encodedCredentials}"]
+                        def ahead = powershell(returnStatus: true, script: "Invoke-WebRequest -Uri ${endpoint} -Headers ${Headers} | ConvertFrom-Json")
+                        echo ahead.status
+                    }
+                }
+            }
+        }
+    }
+}
